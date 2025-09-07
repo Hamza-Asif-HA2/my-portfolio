@@ -40,12 +40,8 @@ const Portfolio = () => {
       email: "hamzaasif0726@gmail.com",
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
-<<<<<<< HEAD
       resume: "#"
-=======
-      resume: "#",
-      avatar: me
->>>>>>> e8e738dacc16aa9b3be53e542ea81f92c6fc9d5c
+
     },
     
     skills: [
@@ -271,10 +267,10 @@ const Portfolio = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className={`w-32 h-32 mx-auto rounded-full ${
+            <div className={`mt-22 w-32 h-32 mx-auto rounded-full ${
               darkMode ? 'bg-gradient-to-r from-blue-400 to-purple-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'
             } flex items-center justify-center mb-8`}>
-              <FaCode className="text-4xl text-white" />
+              <FaCode className="text-3xl text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi, I'm {portfolioData.personal.name}
