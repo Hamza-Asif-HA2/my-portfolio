@@ -53,7 +53,11 @@ const Portfolio = () => {
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
       resume: "#",
+<<<<<<< HEAD
       avatar: me
+=======
+      avatar: "./assets/me.png" // Add your avatar URL
+>>>>>>> f22fe7e5fa04d63b1c9f03a9e4786d887d5f1c49
     },
     
     skills: [
