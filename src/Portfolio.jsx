@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
   FaGithub, 
@@ -25,7 +24,7 @@ import {
 import { SiMongodb, SiExpress, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import trendyImage from './assets/trendy-ecommerce.png';
 import assignmentImage from './assets/getyourassignment.png';
-
+import resume from './assets/hamza-resume.pdf';
 const Portfolio = () => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(true);
@@ -40,8 +39,7 @@ const Portfolio = () => {
       email: "hamzaasif0726@gmail.com",
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
-      resume: "#"
-
+      resume: resume
     },
     
     skills: [
@@ -145,27 +143,6 @@ const Portfolio = () => {
     setMobileMenuOpen(false);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
-
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
@@ -176,13 +153,9 @@ const Portfolio = () => {
       } border-b ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-xl font-bold"
-            >
+            <div className="text-xl font-bold">
               {portfolioData.personal.name}
-            </motion.div>
+            </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -222,51 +195,33 @@ const Portfolio = () => {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className={`md:hidden border-t ${
-                darkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'
-              }`}
-            >
-              <div className="px-4 py-2 space-y-1">
-                {navigation.map((item, index) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    onClick={() => scrollToSection(item.id)}
-                    className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 ${
-                      activeSection === item.id
-                        ? 'text-blue-400 bg-blue-400/10'
-                        : `hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`
-                    }`}
-                  >
-                    {item.name}
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {mobileMenuOpen && (
+          <div className={`md:hidden border-t ${
+            darkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'
+          }`}>
+            <div className="px-4 py-2 space-y-1">
+              {navigation.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 ${
+                    activeSection === item.id
+                      ? 'text-blue-400 bg-blue-400/10'
+                      : `hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`
+                  }`}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-4">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="text-center max-w-4xl mx-auto"
-        >
-          <motion.div
-            variants={itemVariants}
-            className="mb-8"
-          >
+        <div className="text-center max-w-4xl mx-auto">
+          <div className="mb-8">
             <div className={`mt-22 w-32 h-32 mx-auto rounded-full ${
               darkMode ? 'bg-gradient-to-r from-blue-400 to-purple-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'
             } flex items-center justify-center mb-8`}>
@@ -281,12 +236,9 @@ const Portfolio = () => {
             <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               {portfolioData.personal.bio}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-4 mb-8"
-          >
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
             {portfolioData.social.map((social) => (
               <a
                 key={social.name}
@@ -298,38 +250,29 @@ const Portfolio = () => {
                 <social.icon className="text-xl" />
               </a>
             ))}
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
+          <div>
             <button
               onClick={() => scrollToSection('projects')}
               className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               View My Work
             </button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* About Section */}
       <section id="about" className={`py-20 px-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
             <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <h3 className="text-2xl font-semibold mb-6">Full Stack Developer</h3>
               <p className="text-lg mb-6 leading-relaxed">
                 I specialize in modern web development using the MERN stack, crafting responsive 
@@ -349,26 +292,17 @@ const Portfolio = () => {
               >
                 Download Resume
               </a>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
-            >
+            <div className="grid grid-cols-2 gap-4">
               {[
                 { icon: FaCode, label: "Frontend", desc: "React, HTML, CSS" },
                 { icon: FaServer, label: "Backend", desc: "Node.js, Express" },
                 { icon: FaDatabase, label: "Database", desc: "MongoDB, MySQL" },
                 { icon: FaMobile, label: "Mobile", desc: "React Native" }
-              ].map((item, index) => (
-                <motion.div
+              ].map((item) => (
+                <div
                   key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className={`p-6 rounded-lg text-center ${
                     darkMode ? 'bg-gray-800' : 'bg-white'
                   } shadow-lg hover:shadow-xl transition-shadow duration-200`}
@@ -376,9 +310,9 @@ const Portfolio = () => {
                   <item.icon className="text-3xl text-blue-500 mx-auto mb-4" />
                   <h4 className="font-semibold mb-2">{item.label}</h4>
                   <p className="text-sm text-gray-400">{item.desc}</p>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -386,31 +320,22 @@ const Portfolio = () => {
       {/* Skills Section */}
       <section id="skills" className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
             <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {portfolioData.skills.map((skill, index) => (
-              <motion.div
+            {portfolioData.skills.map((skill) => (
+              <div
                 key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className={`p-4 aspect-square rounded-lg ${
                   darkMode ? 'bg-gray-800' : 'bg-gray-50'
                 } hover:shadow-lg transition-all duration-200 group flex flex-col items-center justify-center`}
               >
                 <skill.icon className={`text-4xl mb-3 ${skill.color} group-hover:scale-110 transition-transform duration-200`} />
                 <h3 className="font-semibold text-center">{skill.name}</h3>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -419,24 +344,15 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section id="projects" className={`py-20 px-4 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
             <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-          </motion.div>
+          </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
-            {portfolioData.projects.map((project, index) => (
-              <motion.div
+            {portfolioData.projects.map((project) => (
+              <div
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
                 className={`rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 ${
                   darkMode ? 'bg-gray-800' : 'bg-white'
                 } group`}
@@ -472,7 +388,7 @@ const Portfolio = () => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -481,26 +397,16 @@ const Portfolio = () => {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
             <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
             <p className="text-lg max-w-2xl mx-auto">
               I'm always open to discussing new opportunities, interesting projects, 
               or just having a chat about technology.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
+          <div className="text-center">
             <a
               href={`mailto:${portfolioData.personal.email}`}
               className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200"
@@ -524,7 +430,7 @@ const Portfolio = () => {
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
