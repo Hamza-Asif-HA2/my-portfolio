@@ -40,7 +40,12 @@ const Portfolio = () => {
       email: "hamzaasif0726@gmail.com",
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
+<<<<<<< HEAD
       resume: "#"
+=======
+      resume: "#",
+      avatar: me
+>>>>>>> e8e738dacc16aa9b3be53e542ea81f92c6fc9d5c
     },
     
     skills: [
