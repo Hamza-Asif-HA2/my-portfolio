@@ -25,6 +25,7 @@ import { SiMongodb, SiExpress, SiTailwindcss, SiNextdotjs } from 'react-icons/si
 import trendyImage from './assets/trendy-ecommerce.png';
 import assignmentImage from './assets/getyourassignment.png';
 import resume from './assets/hamza-resume.pdf';
+import profileImage from './assets/me.png';
 const Portfolio = () => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(true);
@@ -222,10 +223,12 @@ const Portfolio = () => {
       <section id="home" className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center max-w-4xl mx-auto">
           <div className="mb-8">
-            <div className={`mt-22 w-32 h-32 mx-auto rounded-full ${
-              darkMode ? 'bg-gradient-to-r from-blue-400 to-purple-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'
-            } flex items-center justify-center mb-8`}>
-              <FaCode className="text-3xl text-white" />
+            <div className="mt-22 w-32 h-32 mx-auto mb-8 overflow-hidden rounded-full ring-4 ring-blue-500 shadow-lg">
+              <img 
+                src={profileImage} 
+                alt="Hamza Asif" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
               Hi, I'm {portfolioData.personal.name}
