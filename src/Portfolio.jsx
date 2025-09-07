@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -20,65 +20,46 @@ import {
   FaJs,
   FaHtml5,
   FaCss3Alt,
-  FaGitAlt,
-  FaDownload,
-  FaChevronDown,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaArrowRight
+  FaGitAlt
 } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiTailwindcss, SiNextdotjs, SiFirebase } from 'react-icons/si';
-import { TbBrandFramerMotion } from 'react-icons/tb';
+import { SiMongodb, SiExpress, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import trendyImage from './assets/trendy-ecommerce.png';
 import assignmentImage from './assets/getyourassignment.png';
-import me from "./assets/me.png";
 
 const Portfolio = () => {
   const navigate = useNavigate();
-  const [darkMode, setDarkMode] = useState(() => {
-    // Check user's preference from localStorage or system preference
-    const savedMode = localStorage.getItem('darkMode');
-    return savedMode ? JSON.parse(savedMode) : window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  const [darkMode, setDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   // Portfolio data - Easy to manage and update
-  const portfolioData = useMemo(() => ({
+  const portfolioData = {
     personal: {
       name: "Hamza Asif",
       title: "Full Stack MERN Developer",
       email: "hamzaasif0726@gmail.com",
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
-      resume: "#",
-<<<<<<< HEAD
-      avatar: me
-=======
-      avatar: "./assets/me.png" // Add your avatar URL
->>>>>>> f22fe7e5fa04d63b1c9f03a9e4786d887d5f1c49
+      resume: "#"
     },
     
     skills: [
-      { name: "React.js", icon: FaReact, color: "text-blue-400" },
-      { name: "Node.js", icon: FaNodeJs, color: "text-green-400" },
-      { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-      { name: "Express.js", icon: SiExpress, color: "text-gray-400" },
-      { name: "JavaScript", icon: FaJs, color: "text-yellow-400" },
-      { name: "HTML5", icon: FaHtml5, color: "text-orange-500" },
-      { name: "CSS3", icon: FaCss3Alt, color: "text-blue-500" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
-      { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
-      { name: "Firebase", icon: SiFirebase, color: "text-yellow-500" },
-      { name: "Framer Motion", icon: TbBrandFramerMotion, color: "text-pink-500" }
+      { name: "React.js", icon: FaReact, level: 90, color: "text-blue-400" },
+      { name: "Node.js", icon: FaNodeJs, level: 85, color: "text-green-400" },
+      { name: "MongoDB", icon: SiMongodb, level: 80, color: "text-green-600" },
+      { name: "Express.js", icon: SiExpress, level: 85, color: "text-gray-400" },
+      { name: "JavaScript", icon: FaJs, level: 88, color: "text-yellow-400" },
+      { name: "HTML5", icon: FaHtml5, level: 92, color: "text-orange-500" },
+      { name: "CSS3", icon: FaCss3Alt, level: 88, color: "text-blue-500" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, level: 85, color: "text-cyan-400" },
+      { name: "Git", icon: FaGitAlt, level: 80, color: "text-orange-600" }
     ],
 
     projects: [
       {
         id: 1,
         title: "Trendy Ecommerce Website",
-        description: "A modern e-commerce platform built with React.js and Firebase, offering a seamless shopping experience with real-time updates and secure authentication.",
+        description: "A modern e-commerce platform built with React.js and Firebase, offering a seamless shopping experience with real-time updates and secure authentication. The integration of Tailwind CSS ensures a sleek, responsive design that adapts perfectly to all devices.",
         technologies: ["React.js", "Firebase", "Tailwind CSS", "React Router", "Context API"],
         image: trendyImage,
         github: "https://github.com/Hamza-Asif-HA2/Trendy-Ecommerce-Web-App",
@@ -93,14 +74,12 @@ const Portfolio = () => {
           "Clean and intuitive user interface",
           "State management with Context API"
         ],
-        longDescription: "Trendy Ecommerce is a full-featured online shopping platform that combines modern design with powerful functionality. Built using React.js for the frontend and Firebase for backend services, it provides a robust and scalable solution for online retail. The use of Tailwind CSS ensures a consistent and responsive design across all devices, while Firebase's real-time database capabilities enable instant updates to product inventory and user cart data. The platform features secure user authentication, an intuitive shopping experience, and efficient state management using React's Context API.",
-        date: "2024",
-        category: "E-commerce Web App"
+        longDescription: "Trendy Ecommerce is a full-featured online shopping platform that combines modern design with powerful functionality. Built using React.js for the frontend and Firebase for backend services, it provides a robust and scalable solution for online retail. The use of Tailwind CSS ensures a consistent and responsive design across all devices, while Firebase's real-time database capabilities enable instant updates to product inventory and user cart data. The platform features secure user authentication, an intuitive shopping experience, and efficient state management using React's Context API."
       },
       {
         id: 2,
         title: "AI Assignment Generator",
-        description: "An innovative educational tool powered by Google's Gemini AI API that helps students and educators generate customized assignments and learning materials.",
+        description: "An innovative educational tool powered by Google's Gemini AI API that helps students and educators generate customized assignments and learning materials. Built with React.js and Firebase, it offers a seamless, interactive experience for academic content generation.",
         technologies: ["React.js", "Firebase", "Gemini AI API", "Tailwind CSS", "React Router"],
         image: assignmentImage,
         github: "https://github.com/Hamza-Asif-HA2/aiassignment",
@@ -115,27 +94,7 @@ const Portfolio = () => {
           "Support for multiple academic subjects and formats",
           "Secure data storage and retrieval with Firebase"
         ],
-        longDescription: "The AI Assignment Generator is a cutting-edge educational platform that harnesses the power of Google's Gemini AI API to revolutionize assignment creation. Built with React.js and styled with Tailwind CSS, the platform offers a modern and intuitive interface for both students and educators. Firebase integration ensures secure user authentication and reliable data storage, while the Gemini AI API enables intelligent, context-aware content generation. Users can create customized assignments across various subjects, with real-time generation and updates. The platform's responsive design and efficient state management make it accessible and user-friendly across all devices.",
-        date: "2024",
-        category: "Educational Web App"
-      }
-    ],
-
-    services: [
-      {
-        title: "Frontend Development",
-        description: "Creating responsive and interactive user interfaces with React.js, Tailwind CSS, and modern JavaScript.",
-        icon: FaCode
-      },
-      {
-        title: "Backend Development",
-        description: "Building robust server-side applications with Node.js, Express, and database management.",
-        icon: FaServer
-      },
-      {
-        title: "Full-Stack Solutions",
-        description: "End-to-end web application development using the MERN stack and related technologies.",
-        icon: FaDatabase
+        longDescription: "The AI Assignment Generator is a cutting-edge educational platform that harnesses the power of Google's Gemini AI API to revolutionize assignment creation. Built with React.js and styled with Tailwind CSS, the platform offers a modern and intuitive interface for both students and educators. Firebase integration ensures secure user authentication and reliable data storage, while the Gemini AI API enables intelligent, context-aware content generation. Users can create customized assignments across various subjects, with real-time generation and updates. The platform's responsive design and efficient state management make it accessible and user-friendly across all devices."
       }
     ],
 
@@ -144,7 +103,7 @@ const Portfolio = () => {
       { name: "LinkedIn", icon: FaLinkedin, url: "https://www.linkedin.com/in/hamza-asif-6a550321a/" },
       { name: "Email", icon: FaEnvelope, url: "mailto:hamzaasif0726@gmail.com" }
     ]
-  }), []);
+  };
 
   const navigation = [
     { name: 'Home', id: 'home' },
@@ -154,23 +113,10 @@ const Portfolio = () => {
     { name: 'Contact', id: 'contact' }
   ];
 
-  // Save dark mode preference to localStorage
-  useEffect(() => {
-    localStorage.setItem('darkMode', JSON.stringify(darkMode));
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = navigation.map(nav => nav.id);
       const scrollPosition = window.scrollY + 100;
-      
-      // Set scrolled state for navbar styling
-      setScrolled(window.scrollY > 50);
 
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -186,7 +132,7 @@ const Portfolio = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -219,27 +165,20 @@ const Portfolio = () => {
     }
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'
     }`}>
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? (darkMode ? 'bg-gray-900/95 backdrop-blur-sm shadow-lg' : 'bg-white/95 backdrop-blur-sm shadow-md') 
-          : (darkMode ? 'bg-transparent' : 'bg-transparent')
+        darkMode ? 'bg-gray-900/95 backdrop-blur-sm' : 'bg-white/95 backdrop-blur-sm'
       } border-b ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-xl font-bold cursor-pointer"
-              onClick={scrollToTop}
+              className="text-xl font-bold"
             >
               {portfolioData.personal.name}
             </motion.div>
@@ -250,17 +189,11 @@ const Portfolio = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`transition-colors duration-200 hover:text-blue-400 relative ${
+                  className={`transition-colors duration-200 hover:text-blue-400 ${
                     activeSection === item.id ? 'text-blue-400' : ''
                   }`}
                 >
                   {item.name}
-                  {activeSection === item.id && (
-                    <motion.div 
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-400"
-                      layoutId="activeSection"
-                    />
-                  )}
                 </button>
               ))}
             </div>
@@ -272,7 +205,6 @@ const Portfolio = () => {
                 className={`p-2 rounded-lg transition-colors duration-200 ${
                   darkMode ? 'hover:bg-gray-800' : 'hover:bg-gray-100'
                 }`}
-                aria-label="Toggle dark mode"
               >
                 {darkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
               </button>
@@ -281,7 +213,6 @@ const Portfolio = () => {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2"
-                aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <FaTimes /> : <FaBars />}
               </button>
@@ -296,12 +227,11 @@ const Portfolio = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className={`md:hidden fixed top-16 left-0 right-0 border-t ${
-                darkMode ? 'border-gray-800 bg-gray-900/95 backdrop-blur-md' : 'border-gray-200 bg-white/95 backdrop-blur-md'
-              } shadow-lg z-50`}
+              className={`md:hidden border-t ${
+                darkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'
+              }`}
             >
-              <div className="px-4 py-4 space-y-2">
+              <div className="px-4 py-2 space-y-1">
                 {navigation.map((item, index) => (
                   <motion.button
                     key={item.id}
@@ -309,12 +239,10 @@ const Portfolio = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => scrollToSection(item.id)}
-                    className={`block w-full text-left px-4 py-3 rounded-lg transition-colors duration-200 ${
+                    className={`block w-full text-left px-3 py-2 rounded-md transition-colors duration-200 ${
                       activeSection === item.id
                         ? 'text-blue-400 bg-blue-400/10'
-                        : darkMode 
-                          ? 'hover:bg-gray-800/80' 
-                          : 'hover:bg-gray-100'
+                        : `hover:${darkMode ? 'bg-gray-800' : 'bg-gray-100'}`
                     }`}
                   >
                     {item.name}
@@ -327,7 +255,7 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
+      <section id="home" className="min-h-screen flex items-center justify-center px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -338,84 +266,46 @@ const Portfolio = () => {
             variants={itemVariants}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-blue-500 mb-8">
-              <img 
-                src={portfolioData.personal.avatar} 
-                alt={portfolioData.personal.name}
-                className="w-full h-full object-cover"
-              />
+            <div className={`w-32 h-32 mx-auto rounded-full ${
+              darkMode ? 'bg-gradient-to-r from-blue-400 to-purple-500' : 'bg-gradient-to-r from-blue-500 to-purple-600'
+            } flex items-center justify-center mb-8`}>
+              <FaCode className="text-4xl text-white" />
             </div>
-            <motion.h1 
-              className="text-4xl md:text-6xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              Hi, I'm <span className="text-blue-500">{portfolioData.personal.name}</span>
-            </motion.h1>
-            <motion.h2 
-              className="text-xl md:text-2xl text-blue-400 mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Hi, I'm {portfolioData.personal.name}
+            </h1>
+            <h2 className="text-xl md:text-2xl text-gray-400 mb-6">
               {portfolioData.personal.title}
-            </motion.h2>
-            <motion.p 
-              className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
+            </h2>
+            <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
               {portfolioData.personal.bio}
-            </motion.p>
+            </p>
           </motion.div>
 
           <motion.div
             variants={itemVariants}
             className="flex flex-wrap justify-center gap-4 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
           >
             {portfolioData.social.map((social) => (
               <a
                 key={social.name}
                 href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`p-3 rounded-lg transition-all duration-200 hover:scale-110 ${
                   darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'
                 }`}
-                aria-label={social.name}
               >
                 <social.icon className="text-xl" />
               </a>
             ))}
           </motion.div>
 
-          <motion.div 
-            variants={itemVariants}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
+          <motion.div variants={itemVariants}>
             <button
               onClick={() => scrollToSection('projects')}
-              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center"
+              className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200"
             >
               View My Work
-              <FaChevronDown className="ml-2" />
             </button>
-            <a
-              href={portfolioData.personal.resume}
-              download
-              className="border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center"
-            >
-              Download CV
-              <FaDownload className="ml-2" />
-            </a>
           </motion.div>
         </motion.div>
       </section>
@@ -426,7 +316,7 @@ const Portfolio = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
@@ -449,25 +339,15 @@ const Portfolio = () => {
               <p className="text-lg mb-8 leading-relaxed">
                 Beyond coding, I'm dedicated to continuous learning and staying current with emerging 
                 technologies. I enjoy tackling complex problems, optimizing application performance, 
-                and collaborating with teams to deliver exceptional web solutions.
+                and collaborating with teams to deliver exceptional web solutions. I'm particularly 
+                interested in creating applications that combine technical excellence with great user experience.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href={portfolioData.personal.resume}
-                  download
-                  className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
-                >
-                  <FaDownload className="mr-2" />
-                  Download Resume
-                </a>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="inline-flex items-center border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
-                >
-                  <FaEnvelope className="mr-2" />
-                  Contact Me
-                </button>
-              </div>
+              <a
+                href={portfolioData.personal.resume}
+                className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+              >
+                Download Resume
+              </a>
             </motion.div>
 
             <motion.div
@@ -476,20 +356,25 @@ const Portfolio = () => {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-4"
             >
-              {portfolioData.services.map((service, index) => (
+              {[
+                { icon: FaCode, label: "Frontend", desc: "React, HTML, CSS" },
+                { icon: FaServer, label: "Backend", desc: "Node.js, Express" },
+                { icon: FaDatabase, label: "Database", desc: "MongoDB, MySQL" },
+                { icon: FaMobile, label: "Mobile", desc: "React Native" }
+              ].map((item, index) => (
                 <motion.div
-                  key={service.title}
+                  key={item.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className={`p-6 rounded-lg text-center ${
                     darkMode ? 'bg-gray-800' : 'bg-white'
-                  } shadow-lg hover:shadow-xl transition-shadow duration-200 group`}
+                  } shadow-lg hover:shadow-xl transition-shadow duration-200`}
                 >
-                  <service.icon className="text-3xl text-blue-500 mx-auto mb-4 group-hover:scale-110 transition-transform duration-200" />
-                  <h4 className="font-semibold mb-2">{service.title}</h4>
-                  <p className="text-sm text-gray-400">{service.description}</p>
+                  <item.icon className="text-3xl text-blue-500 mx-auto mb-4" />
+                  <h4 className="font-semibold mb-2">{item.label}</h4>
+                  <p className="text-sm text-gray-400">{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -503,14 +388,14 @@ const Portfolio = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Skills & Technologies</h2>
             <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {portfolioData.skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
@@ -536,7 +421,7 @@ const Portfolio = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
@@ -564,29 +449,17 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
                     <button
                       onClick={() => navigate(`/project/${project.id}`, { state: { project } })}
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors flex items-center gap-2"
+                      className="p-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
                     >
-                      View Details <FaArrowRight />
+                      View Details
                     </button>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 cursor-pointer" onClick={() => navigate(`/project/${project.id}`, { state: { project } })}>
                   <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
                   <p className="text-gray-400 mb-4">{project.description}</p>
-                  
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <div className="flex items-center gap-1">
-                      <FaCalendarAlt />
-                      <span>{project.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <FaMapMarkerAlt />
-                      <span>{project.category}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech) => (
                       <span
                         key={tech}
                         className={`px-3 py-1 text-sm rounded-full ${
@@ -596,38 +469,6 @@ const Portfolio = () => {
                         {tech}
                       </span>
                     ))}
-                    {project.technologies.length > 3 && (
-                      <span className={`px-3 py-1 text-sm rounded-full ${
-                        darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-700'
-                      }`}>
-                        +{project.technologies.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                  
-                  <div className="flex gap-3">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 text-white hover:bg-gray-700 transition-colors"
-                    >
-                      <FaGithub /> Code
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors"
-                    >
-                      <FaExternalLinkAlt /> Live Demo
-                    </a>
-                    <button
-                      onClick={() => navigate(`/project/${project.id}`, { state: { project } })}
-                      className="flex items-center gap-2 px-4 py-2 rounded-lg border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-colors"
-                    >
-                      Details
-                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -642,7 +483,7 @@ const Portfolio = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
@@ -661,25 +502,22 @@ const Portfolio = () => {
           >
             <a
               href={`mailto:${portfolioData.personal.email}`}
-              className="inline-flex items-center bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200"
+              className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-medium text-lg transition-colors duration-200"
             >
-              <FaEnvelope className="mr-2" />
+              <FaEnvelope className="inline mr-2" />
               Say Hello
             </a>
             <p className="mt-6 text-gray-400">
               Or find me on social media
             </p>
             <div className="flex justify-center gap-4 mt-4">
-              {portfolioData.social.map((social) => (
+              {portfolioData.social.slice(0, -1).map((social) => (
                 <a
                   key={social.name}
                   href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className={`p-3 rounded-lg transition-all duration-200 hover:scale-110 ${
                     darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'
                   }`}
-                  aria-label={social.name}
                 >
                   <social.icon className="text-xl" />
                 </a>
@@ -693,26 +531,10 @@ const Portfolio = () => {
       <footer className={`py-8 px-4 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} {portfolioData.personal.name}. All rights reserved.
+            © 2025 {portfolioData.personal.name}.
           </p>
         </div>
       </footer>
-
-      {/* Scroll to Top Button */}
-      <motion.button
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ 
-          opacity: scrolled ? 1 : 0, 
-          scale: scrolled ? 1 : 0 
-        }}
-        onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 p-3 rounded-full shadow-lg z-40 ${
-          darkMode ? 'bg-blue-500 hover:bg-blue-600' : 'bg-blue-500 hover:bg-blue-600'
-        } text-white transition-colors duration-200`}
-        aria-label="Scroll to top"
-      >
-        <FaChevronDown className="rotate-180" />
-      </motion.button>
     </div>
   );
 };
