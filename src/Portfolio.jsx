@@ -31,6 +31,7 @@ import { SiMongodb, SiExpress, SiTailwindcss, SiNextdotjs, SiFirebase } from 're
 import { TbBrandFramerMotion } from 'react-icons/tb';
 import trendyImage from './assets/trendy-ecommerce.png';
 import assignmentImage from './assets/getyourassignment.png';
+import me from "./assets/me.png";
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const Portfolio = () => {
       location: "Lahore, Pakistan",
       bio: "Passionate full-stack developer with expertise in the MERN stack. I focus on creating efficient, scalable, and user-friendly web applications. Committed to writing clean code and implementing modern development practices.",
       resume: "#",
-      avatar: "src/assets/me.png" // Add your avatar URL
+      avatar: me
     },
     
     skills: [
