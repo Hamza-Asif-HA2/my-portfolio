@@ -83,7 +83,7 @@ const Portfolio = () => {
         technologies: ["React.js", "Firebase", "Gemini AI API", "Tailwind CSS", "React Router"],
         image: assignmentImage,
         github: "https://github.com/Hamza-Asif-HA2/aiassignment",
-        live: "https://getyourassignment.online/",
+        live: "https://getyourassignment-git-main-hamza-asifs-projects-81b51cbf.vercel.app/",
         featured: true,
         features: [
           "Integration with Google's Gemini AI for intelligent content generation",
