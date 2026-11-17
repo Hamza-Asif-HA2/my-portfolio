@@ -18,7 +18,6 @@ export default function Cover({ project }) {
             </div>
           ))}
         </div>
-        <p className="font-wide mt-1 text-[11px] font-semibold text-white">Blogger Studio</p>
       </div>
     );
   }
