@@ -1,1 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-paper: #ececf1;
+  --color-paper-2: #f6f6f9;
+  --color-ink: #121218;
+  --color-muted: #6b6b7b;
+  --color-lav: #a9adf5;
+  --color-lav-deep: #6c70e0;
+  --color-night: #14141c;
+  --color-night-2: #1c1c27;
+  --color-night-3: #262634;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-lav);
+  color: var(--color-ink);
+}
+
+.font-wide {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 118;
+  letter-spacing: -0.035em;
+}
+
+/* Extruded lavender lettering, like the hero name in the reference */
+.extrude {
+  color: var(--color-lav);
+  text-shadow:
+    1px 1px 0 #9397ea,
+    2px 2px 0 #8a8ee6,
+    3px 3px 0 #8185e1,
+    4px 4px 0 #7a7edc,
+    5px 5px 0 #7276d6,
+    14px 22px 30px rgba(60, 60, 140, 0.28);
+}
+
+.extrude-dark {
+  color: var(--color-lav);
+  text-shadow:
+    1px 1px 0 #7d81dd,
+    2px 2px 0 #6f73d2,
+    3px 3px 0 #6266c6,
+    4px 4px 0 #5559b8,
+    14px 22px 40px rgba(0, 0, 0, 0.55);
+}
+
+@utility vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
